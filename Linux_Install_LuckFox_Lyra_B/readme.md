@@ -2,6 +2,7 @@
 
 <span><img src="https://img.shields.io/badge/PicoCalc-LuckFox%20%2B%20Linux-5E81AC?style=for-the-badge&logo=linux&logoColor=white"/></span>
 <span><img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black"/></span>
+<span><img src="https://img.shields.io/badge/Ubuntu-24.04.2-E95420?style=for-the-badge&logo=ubuntu&logoColor=white"/></span>
 
 Esta guía documenta el procedimiento real utilizado para instalar la imagen comunitaria `ubuntu-24.04.2-picocalc` en una **PicoCalc** usando una **[Luckfox Lyra B](https://www.luckfox.com/Luckfox-Lyra)**. La Lyra B tiene memoria SPI NAND onboard, pero para esta imagen de Ubuntu se usó una **tarjeta microSD de 64 GB** como almacenamiento principal.
 
