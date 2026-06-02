@@ -607,10 +607,15 @@ Booteo OK
 
 La PicoCalc arrancó correctamente con Ubuntu 24.04.2 desde la Luckfox Lyra B.
 
+<p align="center">
+  <img src="https://github.com/VintaBytes/LuckFox-Lyra-B-Picocalc/blob/main/img/picocalc_1.jpg" width="300">
+  <img src="https://github.com/VintaBytes/LuckFox-Lyra-B-Picocalc/blob/main/img/picocalc_2.jpg" width="300">
+</p>
+
 ---
 
 
-# Nota importante sobre la opción 2
+# Nota importante
 
 Aunque la herramienta muestra:
 
