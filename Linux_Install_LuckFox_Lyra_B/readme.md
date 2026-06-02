@@ -1,6 +1,9 @@
 # Instalar Ubuntu 24.04.2 en PicoCalc usando Luckfox Lyra B
 
-Esta guía documenta el procedimiento real utilizado para instalar la imagen comunitaria `ubuntu-24.04.2-picocalc` en una **PicoCalc** usando una **Luckfox Lyra B**. La Lyra B tiene memoria SPI NAND onboard, pero para esta imagen de Ubuntu se usó una **tarjeta microSD de 64 GB** como almacenamiento principal.
+<span><img src="https://img.shields.io/badge/PicoCalc-LuckFox%20%2B%20Linux-5E81AC?style=for-the-badge&logo=linux&logoColor=white"/></span>
+<span><img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black"/></span>
+
+Esta guía documenta el procedimiento real utilizado para instalar la imagen comunitaria `ubuntu-24.04.2-picocalc` en una **PicoCalc** usando una **[Luckfox Lyra B](https://www.luckfox.com/Luckfox-Lyra)**. La Lyra B tiene memoria SPI NAND onboard, pero para esta imagen de Ubuntu se usó una **tarjeta microSD de 64 GB** como almacenamiento principal.
 
 El procedimiento no fue completamente lineal: aparecieron algunos errores relacionados con el modo `Maskrom`, la selección del almacenamiento y un fallo de transferencia al 19%. Esta versión de la guía incluye esos problemas y cómo se resolvieron.
 
@@ -131,7 +134,40 @@ Esto confirmó que la microSD era:
 De todos modos, en este procedimiento finalmente no se usó `dd`, porque los archivos extraídos no eran una imagen raw de tarjeta completa, sino un paquete para flashear con `upgrade_tool`.
 
 ---
+## Descargar `upgrade_tool`
 
+Desde la misma carpeta donde quedó `update.img`, se descarga la herramienta de flasheo usada por la comunidad:
+
+```bash
+wget https://files.luckfox.com/wiki/Core3566/upgrade_tool_v2.17.zip
+unzip -j upgrade_tool_v2.17.zip upgrade_tool_v2.17_for_linux/upgrade_tool
+chmod +x upgrade_tool
+```
+
+La salida en esta etapa fue la siguiente:
+
+```text
+LuckFox/ubuntu-24.04.2-picocalc/image/[18Jun2025]$ wget https://files.luckfox.com/wiki/Core3566/upgrade_tool_v2.17.zip
+unzip -j upgrade_tool_v2.17.zip upgrade_tool_v2.17_for_linux/upgrade_tool
+chmod +x upgrade_tool
+--2026-06-01 17:59:27--  https://files.luckfox.com/wiki/Core3566/upgrade_tool_v2.17.zip
+Resolviendo files.luckfox.com (files.luckfox.com)... 47.79.64.227
+Conectando con files.luckfox.com (files.luckfox.com)[47.79.64.227]:443... conectado.
+Petición HTTP enviada, esperando respuesta... 200 OK
+Longitud: 1423018 (1,4M) [application/zip]
+Guardando como: ‘upgrade_tool_v2.17.zip’
+
+upgrade_tool_v2.17. 100%[===================>]   1,36M   820KB/s    en 1,7s    
+
+2026-06-01 17:59:31 (820 KB/s) - ‘upgrade_tool_v2.17.zip’ guardado [1423018/1423018]
+
+Archive:  upgrade_tool_v2.17.zip
+  inflating: upgrade_tool     
+```
+
+La wiki oficial de Luckfox también documenta el uso de herramientas Rockchip/Luckfox para poner la placa en modo LOADER o MASKROM y flashear imágenes. Para el caso de la Lyra, el modo LOADER se activa manteniendo presionado `BOOT` mientras se conecta la placa por USB.
+
+---
 ## Preparar la Luckfox Lyra B
 
 La microSD debe estar colocada en la Luckfox Lyra B durante el proceso.
@@ -495,129 +531,15 @@ Q
 
 ---
 
-## Primer intento de flasheo en `EMMC`: fallo al 19%
+## Flasheo exitoso
 
-Con `EMMC(*)` seleccionado, se ejecutó:
-
-```bash
-sudo ./upgrade_tool uf update.img
-```
-
-El proceso comenzó:
-
-```text
-Loading firmware...
-Support Type:350F	FW Ver:8.1.00	FW Time:2025-06-18 18:36:43
-Loader ver:1.01	Loader Time:2025-06-18 18:34:32
-Start to upgrade firmware...
-Test Device Start
-Test Device Success
-Check Chip Start
-Check Chip Success
-Get FlashInfo Start
-Get FlashInfo Success
-Prepare IDB Start
-Prepare IDB Success
-Download IDB Start
-Download IDB Success
-Download Firmware Start
-Download Image... (19%)
-Download Firmware Fail
-```
-
-Este fallo ya no era por tamaño de partición. Probablemente fue una interrupción de transferencia, un problema de cable USB, puerto USB o estado inestable del loader.
-
-Después de este fallo, se revisó si la placa seguía conectada:
-
-```bash
-sudo ./upgrade_tool LD
-```
-
-y respondió:
-
-```text
-List of rockusb connected(1)
-DevNo=1	Vid=0x2207,Pid=0x350f,LocationID=15	Mode=Loader	SerialNo=2a9dfd2363bcabd0
-```
-
-Luego se intentó:
-
-```bash
-sudo ./upgrade_tool SSD
-```
-
-pero volvió a aparecer:
-
-```text
-device doesn't have the feature,please do rcb command firstly
-```
-
-Entonces se ejecutó:
-
-```bash
-sudo ./upgrade_tool RCB
-```
-
-En un primer intento falló:
-
-```text
-Read capability Fail!
-```
-
-Se probó cambiar o acomodar la conexión USB. En un momento la placa no fue detectada:
-
-```text
-List of rockusb connected(0)
-```
-
-Luego se reconectó correctamente y volvió a aparecer:
-
-```text
-List of rockusb connected(1)
-DevNo=1	Vid=0x2207,Pid=0x350f,LocationID=15	Mode=Loader	SerialNo=2a9dfd2363bcabd0
-```
-
-Después de eso, `RCB` funcionó:
-
-```bash
-sudo ./upgrade_tool RCB
-```
-
-Salida:
-
-```text
-Capability:15 6F 00 00 00 00 00 00 
-Direct LBA:	enabled
-First 4m Access:	enabled
-Read Com Log:	enabled
-Read Secure Mode:	enabled
-New IDB:	enabled
-Switch Storage:	enabled
-```
-
-Se verificó otra vez el destino:
-
-```bash
-sudo ./upgrade_tool SSD
-```
-
-y se confirmó:
-
-```text
-No=2	EMMC(*)
-```
-
----
-
-## Flasheo final exitoso
-
-Con la placa en `Loader`, `RCB` funcionando y `EMMC(*)` seleccionado, se repitió:
+Con la placa en `Loader`, `RCB` funcionando y `EMMC(*)` seleccionado, se ejecutó:
 
 ```bash
 sudo ./upgrade_tool uf update.img
 ```
 
-Esta vez el flasheo terminó correctamente:
+El flasheo terminó correctamente:
 
 ```text
 Loading firmware...
@@ -658,7 +580,7 @@ pero la herramienta respondió:
 No found any rockusb device,please plug device in!
 ```
 
-Esto no fue un problema. Después de `Upgrade firmware ok.`, la placa puede reiniciarse sola o dejar de exponerse como dispositivo RockUSB.
+Esto no es un problema. Después de `Upgrade firmware ok.`, la placa puede reiniciarse sola o dejar de exponerse como dispositivo RockUSB.
 
 ---
 
@@ -686,244 +608,6 @@ La PicoCalc arrancó correctamente con Ubuntu 24.04.2 desde la Luckfox Lyra B.
 
 ---
 
-# Resumen del procedimiento que funcionó
-
-La secuencia efectiva, una vez extraída la imagen, fue:
-
-```bash
-sudo ./upgrade_tool LD
-```
-
-Si aparece en `Maskrom`, borrar la SPI NAND:
-
-```bash
-sudo ./upgrade_tool EF MiniLoaderAll.bin
-```
-
-Luego, si sigue en `Maskrom`, cargar loader:
-
-```bash
-sudo ./upgrade_tool DB MiniLoaderAll.bin
-```
-
-Verificar:
-
-```bash
-sudo ./upgrade_tool LD
-```
-
-Cuando aparezca:
-
-```text
-Mode=Loader
-```
-
-leer capacidades:
-
-```bash
-sudo ./upgrade_tool RCB
-```
-
-Verificar que aparezca:
-
-```text
-Switch Storage: enabled
-```
-
-Entrar al selector de storage:
-
-```bash
-sudo ./upgrade_tool SSD
-```
-
-Si aparece:
-
-```text
-No=6	SPINAND(*)
-```
-
-cambiar a opción 2:
-
-```text
-2
-```
-
-Debe responder:
-
-```text
-Switch EMMC ok.
-```
-
-Confirmar:
-
-```bash
-sudo ./upgrade_tool SSD
-```
-
-Debe aparecer:
-
-```text
-No=2	EMMC(*)
-```
-
-Salir con:
-
-```text
-Q
-```
-
-Flashear:
-
-```bash
-sudo ./upgrade_tool uf update.img
-```
-
-El resultado correcto es:
-
-```text
-Download Image... (100%)
-Download Firmware Success
-Upgrade firmware ok.
-```
-
----
-
-# Problemas encontrados y solución
-
-## Error: `device doesn't have the feature,please do rcb command firstly`
-
-Apareció al ejecutar:
-
-```bash
-sudo ./upgrade_tool SSD
-```
-
-Solución: ejecutar primero `RCB`, pero solo funciona si la placa está correctamente en `Loader`.
-
-```bash
-sudo ./upgrade_tool RCB
-```
-
-Si `RCB` falla, puede ser necesario cargar el loader con:
-
-```bash
-sudo ./upgrade_tool DB MiniLoaderAll.bin
-```
-
-o desconectar/reconectar la placa con `BOOT`.
-
----
-
-## Error: `Read capability Fail!`
-
-Apareció al ejecutar:
-
-```bash
-sudo ./upgrade_tool RCB
-```
-
-Causa probable: la placa seguía en `Maskrom`, o el loader quedó en estado inestable.
-
-Solución: reconectar la placa, cargar `DB MiniLoaderAll.bin` si está en `Maskrom`, o verificar con:
-
-```bash
-sudo ./upgrade_tool LD
-```
-
----
-
-## Error: `Image is larger than partition size in the firmware`
-
-Apareció al ejecutar:
-
-```bash
-sudo ./upgrade_tool uf update.img
-```
-
-Causa: la herramienta estaba intentando escribir la imagen en `SPINAND`, la memoria interna de la Lyra B, que es demasiado pequeña.
-
-Solución: cambiar el storage con:
-
-```bash
-sudo ./upgrade_tool SSD
-```
-
-y seleccionar:
-
-```text
-2
-```
-
-hasta que aparezca:
-
-```text
-No=2	EMMC(*)
-```
-
----
-
-## Error: `Error:Switch Storage failed!` al elegir `SD`
-
-Apareció al intentar:
-
-```text
-3
-```
-
-en el selector de storage.
-
-Aunque `SD` parecía la opción lógica, en este caso no funcionó.
-
-Solución: usar la opción `2`, que aparece como `EMMC`.
-
----
-
-## Fallo al 19%
-
-Apareció durante:
-
-```bash
-sudo ./upgrade_tool uf update.img
-```
-
-Salida:
-
-```text
-Download Image... (19%)
-Download Firmware Fail
-```
-
-Causa probable: inestabilidad de conexión USB, puerto, cable o estado del loader.
-
-Solución aplicada:
-
-1. Verificar que la placa siga en `Loader`:
-
-```bash
-sudo ./upgrade_tool LD
-```
-
-2. Si `SSD` vuelve a pedir `RCB`, ejecutar:
-
-```bash
-sudo ./upgrade_tool RCB
-```
-
-3. Confirmar que el destino siga siendo:
-
-```text
-No=2	EMMC(*)
-```
-
-4. Repetir:
-
-```bash
-sudo ./upgrade_tool uf update.img
-```
-
-El segundo intento completó al 100%.
-
----
 
 # Nota importante sobre la opción 2
 
@@ -965,9 +649,3 @@ Upgrade firmware ok.
 ```
 
 Después de instalar la Luckfox Lyra B en la PicoCalc, el sistema arrancó correctamente.
-
-Resultado:
-
-```text
-PicoCalc + Luckfox Lyra B + Ubuntu 24.04.2 = booteo OK
-```
