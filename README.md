@@ -18,8 +18,8 @@ Guía paso a paso para instalar la imagen comunitaria `ubuntu-24.04.2-picocalc` 
 
 Incluye preparación de la imagen, uso de `upgrade_tool`, entrada en modo `Maskrom` / `Loader`, selección del almacenamiento correcto, flasheo de la imagen y montaje físico de la placa en la PicoCalc.
 
-* [Versión en español](readme.md)
-* [English version](readme_en.md)
+* [Versión en español](https://github.com/VintaBytes/LuckFox-Lyra-B-Picocalc/blob/main/Linux_Install_LuckFox_Lyra_B/readme.md)
+* [English version](https://github.com/VintaBytes/LuckFox-Lyra-B-Picocalc/blob/main/Linux_Install_LuckFox_Lyra_B/readme_en.md)
 
 ---
 
