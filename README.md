@@ -6,6 +6,10 @@
 
 Este repositorio reúne documentación práctica sobre el uso de **Linux en la PicoCalc**, especialmente a partir de la instalación de una **Luckfox Lyra B** como placa principal.
 
+<p align="center">
+  <img src="./img/Luckfox_Lyra_B.jpg" alt="Luckfox Lyra B" width="300">
+</p>
+
 La idea es registrar procedimientos reales, problemas encontrados, soluciones probadas y notas útiles para quienes quieran experimentar con esta plataforma como una pequeña computadora Linux portátil.
 
 ---
@@ -20,6 +24,11 @@ Incluye preparación de la imagen, uso de `upgrade_tool`, entrada en modo `Maskr
 
 * [Versión en español](https://github.com/VintaBytes/LuckFox-Lyra-B-Picocalc/blob/main/Linux_Install_LuckFox_Lyra_B/readme.md)
 * [English version](https://github.com/VintaBytes/LuckFox-Lyra-B-Picocalc/blob/main/Linux_Install_LuckFox_Lyra_B/readme_en.md)
+
+
+<p align="center">
+  <img src="./img/picocalc_2.jpg?raw=true alt="PicoCalc" width="300">
+</p>
 
 ---
 
