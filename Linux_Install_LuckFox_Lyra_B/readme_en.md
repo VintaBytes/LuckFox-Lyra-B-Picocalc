@@ -650,3 +650,9 @@ Upgrade firmware ok.
 ```
 
 After installing the Luckfox Lyra B in the PicoCalc, the system booted correctly.
+
+<p align="center">
+  <img src="https://github.com/VintaBytes/LuckFox-Lyra-B-Picocalc/blob/main/img/picocalc_1.jpg" width="300">
+  <img src="https://github.com/VintaBytes/LuckFox-Lyra-B-Picocalc/blob/main/img/picocalc_2.jpg" width="300">
+</p>
+
