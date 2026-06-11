@@ -30,6 +30,10 @@ Incluye preparación de la imagen, uso de `upgrade_tool`, entrada en modo `Maskr
   <img src="./img/picocalc_2.jpg?raw=true alt="PicoCalc" width="300">
 </p>
 
+### PicoEdit
+
+**PicoEdit** es un editor de código compacto para terminal, diseñado especialmente para pantallas pequeñas y dispositivos portátiles como la **Clockwork Pi PicoCalc**.
+
 ---
 
 ## Próximos documentos
