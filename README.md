@@ -30,9 +30,16 @@ Incluye preparación de la imagen, uso de `upgrade_tool`, entrada en modo `Maskr
   <img src="./img/picocalc_2.jpg?raw=true alt="PicoCalc" width="300">
 </p>
 
+---
+
 ### PicoEdit
 
-**PicoEdit** es un editor de código compacto para terminal, diseñado especialmente para pantallas pequeñas y dispositivos portátiles como la **Clockwork Pi PicoCalc**.
+**[PicoEdit](https://github.com/VintaBytes/LuckFox-Lyra-B-Picocalc/tree/main/Software/PicoEdit)** es un editor de código compacto para terminal, diseñado especialmente para pantallas pequeñas y dispositivos portátiles como la **Clockwork Pi PicoCalc**.
+
+<p align="center">
+  <img src="https://github.com/VintaBytes/LuckFox-Lyra-B-Picocalc/blob/main/Software/PicoEdit/img/01.png" width="300"> 
+  <img src="https://github.com/VintaBytes/LuckFox-Lyra-B-Picocalc/blob/main/Software/PicoEdit/img/05.png" width="300">
+</p>
 
 ---
 
