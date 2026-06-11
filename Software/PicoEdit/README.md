@@ -1,4 +1,11 @@
 # PicoEdit
+<span><img src="https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue"/></span>
+<span><img src="https://img.shields.io/badge/PicoCalc-LuckFox%20%2B%20Linux-5E81AC?style=for-the-badge&logo=linux&logoColor=white"/></span>
+<span><img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black"/></span>
+<span><img src="https://img.shields.io/badge/Ubuntu-24.04.2-E95420?style=for-the-badge&logo=ubuntu&logoColor=white"/></span>
+
+
+* [English version](https://github.com/VintaBytes/LuckFox-Lyra-B-Picocalc/blob/main/Software/PicoEdit/README_EN.md)
 
 **PicoEdit** es un editor de código compacto para terminal, diseñado especialmente para pantallas pequeñas y dispositivos portátiles como la **Clockwork Pi PicoCalc**.
 
