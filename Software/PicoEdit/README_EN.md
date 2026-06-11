@@ -1,5 +1,11 @@
 # PicoEdit
+<span><img src="https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue"/></span>
+<span><img src="https://img.shields.io/badge/PicoCalc-LuckFox%20%2B%20Linux-5E81AC?style=for-the-badge&logo=linux&logoColor=white"/></span>
+<span><img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black"/></span>
+<span><img src="https://img.shields.io/badge/Ubuntu-24.04.2-E95420?style=for-the-badge&logo=ubuntu&logoColor=white"/></span>
 
+* [Versión en español](https://github.com/VintaBytes/LuckFox-Lyra-B-Picocalc/blob/main/Software/PicoEdit/README.md)
+* 
 **PicoEdit** is a compact terminal-based code editor designed especially for small screens and portable devices such as the **Clockwork Pi PicoCalc**.
 
 It was created as a simple, lightweight, self-contained tool for writing and testing Python scripts directly from a reduced-size terminal. Its goal is not to replace full-featured editors such as Vim, Nano, or VS Code, but to provide a practical, readable, and comfortable editing experience in an environment where every column and every line of screen space matters.
