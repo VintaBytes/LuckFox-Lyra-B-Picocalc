@@ -53,7 +53,7 @@ Posibles temas futuros:
 * Configuración inicial del sistema.
 * Conexión de red.
 * Instalación de herramientas de consola.
-* Uso de Python en la PicoCalc.
+* [Uso de Python en la PicoCalc](https://github.com/VintaBytes/LuckFox-Lyra-B-Picocalc/tree/main/Software/PicoEdit).
 * Edición de texto y programación desde terminal.
 * Ajustes de rendimiento y almacenamiento.
 * Notas sobre limitaciones, problemas y soluciones encontradas.
