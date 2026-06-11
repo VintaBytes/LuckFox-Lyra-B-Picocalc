@@ -27,7 +27,7 @@ Incluye preparación de la imagen, uso de `upgrade_tool`, entrada en modo `Maskr
 
 
 <p align="center">
-  <img src="./img/picocalc_2.jpg?raw=true alt="PicoCalc" width="300">
+  <img src="https://github.com/VintaBytes/LuckFox-Lyra-B-Picocalc/blob/main/img/07.png" width="300">
 </p>
 
 ---
