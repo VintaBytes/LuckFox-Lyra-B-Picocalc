@@ -6,6 +6,11 @@ Nació como una herramienta simple, liviana y autocontenida para escribir y prob
 
 El editor está pensado para funcionar bien en interfaces de aproximadamente **53 columnas por 26 filas**, con una estética sobria inspirada en herramientas clásicas de consola.
 
+<p align="center">
+  <img src="https://github.com/VintaBytes/LuckFox-Lyra-B-Picocalc/blob/main/Software/PicoEdit/img/01.png" width="300"> 
+  <img src="https://github.com/VintaBytes/LuckFox-Lyra-B-Picocalc/blob/main/Software/PicoEdit/img/05.png" width="300">
+</p>
+
 ---
 
 ## Características principales
@@ -86,6 +91,11 @@ La barra inferior muestra:
 
 El indicador `INS` muestra que el editor está en modo inserción. Si se cambia a modo reemplazo, se muestra `REP`.
 
+<p align="center">
+  <img src="https://github.com/VintaBytes/LuckFox-Lyra-B-Picocalc/blob/main/Software/PicoEdit/img/04.png" width="300"> 
+  <img src="https://github.com/VintaBytes/LuckFox-Lyra-B-Picocalc/blob/main/Software/PicoEdit/img/03.png" width="300">
+</p>
+
 ---
 
 ## Menú principal
@@ -151,6 +161,9 @@ ALT + F   Find
 ALT + N   Find next
 ALT + R   Run file
 ```
+<p align="center">
+  <img src="https://github.com/VintaBytes/LuckFox-Lyra-B-Picocalc/blob/main/Software/PicoEdit/img/02.png" width="300">
+</p>
 
 ---
 
